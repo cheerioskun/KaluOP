@@ -5,22 +5,24 @@ import {
   Menu,
   Segment,
   Visibility,
+  Popup,
+  Item
 } from 'semantic-ui-react';
 
 
 class Landing extends Component {
   constructor() {
     super();
-    this.state = { fixed: false };
+    this.state = { navFixed: false };
     this.hideFixedMenu = this.hideFixedMenu.bind(this);
     this.showFixedMenu = this.showFixedMenu.bind(this);
     this.height = window.innerHeight;
   }
-  hideFixedMenu = () => this.setState({ fixed: false });
-  showFixedMenu = () => this.setState({ fixed: true });
+  hideFixedMenu = () => this.setState({ navFixed: false });
+  showFixedMenu = () => this.setState({ navFixed: true });
   render() {
     const { children } = this.props;
-    const { fixed } = this.state;
+    const { navFixed } = this.state;
 
     return (
       <Visibility
@@ -35,10 +37,10 @@ class Landing extends Component {
           vertical
         >
           <Menu
-            fixed={fixed ? 'top' : null}
-            inverted={!fixed}
-            pointing={!fixed}
-            secondary={!fixed}
+            navFixed={navFixed ? 'top' : null}
+            inverted={!navFixed}
+            pointing={!navFixed}
+            secondary={!navFixed}
             size='large'
           >
             <Container>
@@ -48,9 +50,25 @@ class Landing extends Component {
               <Menu.Item as='a' href='#menu'>Menu</Menu.Item>
               <Menu.Item as='a'>Contact</Menu.Item>
               <Menu.Item position='right'>
-                <Button as='a' inverted={!fixed} primary={fixed} icon='search' />
-                <Button as='a' inverted={!fixed} content='Cart' icon='cart' labelPosition='left' style={{ marginLeft: '0.5em' }} />
+                <Button as='a' inverted={!navFixed} primary={navFixed} icon='search' />
+                <Popup wide
+                  position='bottom center'
+                  trigger={<Button as='a' inverted={!navFixed} content='Cart' icon='cart' labelPosition='left' style={{ marginLeft: '0.5em' }} />}
+                  on='click'
 
+                >
+                  <Item.Group>
+                    {this.props.cart.map(item =>
+                      <Item>
+                        <Item.Content>
+                          <Item.Header>{item.itemName}</Item.Header>
+                          <Item.Meta>Qty: {item.qty}</Item.Meta>
+                          <Item.Description>Total Cost: {item.qty * item.unitPrice}.00</Item.Description>
+                        </Item.Content>
+                      </Item>)}
+                  </Item.Group>
+
+                </Popup>
               </Menu.Item>
             </Container>
           </Menu>

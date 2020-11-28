@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Icon } from 'semantic-ui-react';
 class MenuItem extends Component {
 
     render() {
@@ -11,7 +11,12 @@ class MenuItem extends Component {
                     <Card.Description>Just some description</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
-                    <Button basic color="green">Add to Cart</Button>
+                    <Button floated='left' icon='rupee sign' content={this.props.item.unitPrice + '.00'} labelPosition='right' />
+                    <Button.Group floated='right'>
+                        <Button color='red' onClick={() => { this.props.handlers.cartHandler(this.props.item, 'remove') }}><Icon name='minus' /></Button>
+                        <Button.Or text='or' />
+                        <Button positive onClick={() => { this.props.handlers.cartHandler(this.props.item, 'add') }}><Icon name='plus' inverted /></Button>
+                    </Button.Group>
                 </Card.Content>
             </Card>
         );

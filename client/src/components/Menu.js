@@ -31,7 +31,7 @@ class Menu extends Component {
                             itemsPerRow={columnCount}
                             stackable
                         >
-                            {this.state.menuItems.map(item => <MenuItem item={item} />)}
+                            {this.state.menuItems.map(item => <MenuItem item={item} handlers={this.props.handlers} />)}
                         </Card.Group>
                     </Segment>
 
