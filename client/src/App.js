@@ -4,9 +4,14 @@ import Landing from './components/Landing';
 import Menu from './components/Menu';
 import Contact from './components/Contact';
 class App extends Component {
-
-    render(){
-        return(
+    constructor() {
+        super();
+        this.state = {
+            cart: [],
+        };
+    }
+    render() {
+        return (
             <div>
                 <Landing />
                 <Menu />

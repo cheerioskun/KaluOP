@@ -1,13 +1,19 @@
 import React, { Component } from 'react';
-import { Header } from 'semantic-ui-react';
+import { Card, Button } from 'semantic-ui-react';
 class MenuItem extends Component {
 
     render() {
         return (
-            <div>
-                <Header size='large'>{this.props.item.itemName}</Header>
-                <Header size='medium'>Rs.{this.props.item.unitPrice}</Header>
-            </div>
+            <Card>
+                <Card.Content>
+                    <Card.Header>{this.props.item.itemName}</Card.Header>
+                    <Card.Meta className="ui green">Vegetarian</Card.Meta>
+                    <Card.Description>Just some description</Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                    <Button basic color="green">Add to Cart</Button>
+                </Card.Content>
+            </Card>
         );
     }
 }

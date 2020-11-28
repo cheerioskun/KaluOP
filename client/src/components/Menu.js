@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Visibility, Container, Header, Grid } from 'semantic-ui-react';
+import { Segment, Visibility, Container, Header, Grid, Card } from 'semantic-ui-react';
 import MenuItem from './MenuItem';
 import { fetchMenu } from '../api/index.js';
 
@@ -19,19 +19,7 @@ class Menu extends Component {
         fetchMenu().then(
             data => this.setState({ menuItems: [...data.data] })
         ).catch(error => console.log(error));
-        const menuItemComponents = this.state.menuItems.map(menuItem => <Grid.Column><MenuItem item={menuItem} /></Grid.Column>);
-        const menuGridRows = [];
-        let i = 0;
-        while (3 * i < menuItemComponents.length) {
-            let j = 0;
-            let temp = [];
-            while (j < columnCount && 3 * i + j < menuItemComponents.length) {
-                temp.push(menuItemComponents[3 * i + j]);
-                j++;
-            }
-            menuGridRows.push(temp);
-            i++;
-        }
+
         return (
             <div>
                 <Visibility>
@@ -39,9 +27,12 @@ class Menu extends Component {
                         <Container textAlign='center'>
                             <Header style={{ padding: '1em', fontSize: '3em' }}>Menu</Header>
                         </Container>
-                        <Grid columns={columnCount} divided>
-                            {menuGridRows.map(row => <Grid.Row>{row}</Grid.Row>)}
-                        </Grid>
+                        <Card.Group
+                            itemsPerRow={columnCount}
+                            stackable
+                        >
+                            {this.state.menuItems.map(item => <MenuItem item={item} />)}
+                        </Card.Group>
                     </Segment>
 
                 </Visibility>
