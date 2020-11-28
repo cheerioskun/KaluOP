@@ -17,10 +17,9 @@ class Menu extends Component {
     render() {
         const columnCount = 3;
         fetchMenu().then(
-            data => this.setState({ menuItems: [...data] })
+            data => this.setState({ menuItems: [...data.data] })
         ).catch(error => console.log(error));
         const menuItemComponents = this.state.menuItems.map(menuItem => <Grid.Column><MenuItem item={menuItem} /></Grid.Column>);
-        console.log(this.state.menuItems);
         const menuGridRows = [];
         let i = 0;
         while (3 * i < menuItemComponents.length) {
@@ -36,7 +35,7 @@ class Menu extends Component {
         return (
             <div>
                 <Visibility>
-                    <Segment raised>
+                    <Segment raised id="menu">
                         <Container textAlign='center'>
                             <Header style={{ padding: '1em', fontSize: '3em' }}>Menu</Header>
                         </Container>
