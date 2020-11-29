@@ -48,7 +48,6 @@ class App extends Component {
             <div>
                 <Landing handlers={this.cartHandler} cart={this.state.cart} />
                 <Menu handlers={{ cartHandler: this.cartHandler }} />
-                <OrderForm />
                 <Contact />
             </div>
         );
