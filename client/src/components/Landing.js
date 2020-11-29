@@ -14,34 +14,33 @@ import Typewriter from "typewriter-effect";
 class Landing extends Component {
   constructor() {
     super();
-    this.state = { navFixed: false };
+    this.state = { navFixed: false, height: window.innerHeight };
     this.hideFixedMenu = this.hideFixedMenu.bind(this);
     this.showFixedMenu = this.showFixedMenu.bind(this);
-    this.height = window.innerHeight;
+
   }
   hideFixedMenu = () => this.setState({ navFixed: false });
   showFixedMenu = () => this.setState({ navFixed: true });
 
   render() {
-    const { navFixed } = this.state;
 
     return (
-      <Visibility
-        once={false}
-        onBottomPassed={this.showFixedMenu}
-        onBottomPassedReverse={this.hideFixedMenu}
+      <Segment
+        inverted
+        textAlign="center"
+        style={{ minHeight: this.state.height, padding: "1em 0em" }}
+        vertical
       >
-        <Segment
-          inverted
-          textAlign="center"
-          style={{ minHeight: this.height, padding: "1em 0em" }}
-          vertical
+        <Visibility
+          once={false}
+          onBottomPassed={this.showFixedMenu}
+          onBottomPassedReverse={this.hideFixedMenu}
         >
           <Menu
-            navFixed={navFixed ? "top" : null}
-            inverted={!navFixed}
-            pointing={!navFixed}
-            secondary={!navFixed}
+            navFixed={this.state.navFixed ? "top" : null}
+            inverted={!this.state.navFixed}
+            pointing={!this.state.navFixed}
+            secondary={!this.state.navFixed}
             size="large"
           >
             <Container>
@@ -55,8 +54,8 @@ class Landing extends Component {
               <Menu.Item position="right">
                 <Button
                   as="a"
-                  inverted={!navFixed}
-                  primary={navFixed}
+                  inverted={!this.state.navFixed}
+                  primary={this.state.navFixed}
                   icon="search"
                 />
                 <Popup
@@ -65,7 +64,7 @@ class Landing extends Component {
                   trigger={
                     <Button
                       as="a"
-                      inverted={!navFixed}
+                      inverted={!this.state.navFixed}
                       content="Cart"
                       icon="cart"
                       labelPosition="left"
@@ -79,20 +78,21 @@ class Landing extends Component {
               </Menu.Item>
             </Container>
           </Menu>
-          <h1>Hey Do You Want To Order Food From Your Fav Place..</h1>
-          <h4>
-            We A Team Of
+        </Visibility>
+        <h1>Hey Do You Want To Order Food From Your Fav Place..</h1>
+        <h4>
+          We A Team Of
             <Typewriter
-              options={{
-                strings: ["Yash Goenka", "Aakash Barthwal","Rachit Nehra","Hemant Pandey"],
-                autoStart: true,
-                loop: true,
-              }}
-            />
-          </h4>
-          <h1>Are Here To Help You Out</h1>
-        </Segment>
-      </Visibility>
+            options={{
+              strings: ["Yash Goenka", "Aakash Barthwal", "Rachit Nehra", "Hemant Pandey"],
+              autoStart: true,
+              loop: true,
+            }}
+          />
+        </h4>
+        <h1>Are Here To Help You Out</h1>
+      </Segment>
+
     );
   }
 }
