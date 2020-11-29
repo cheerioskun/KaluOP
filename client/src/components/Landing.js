@@ -7,10 +7,12 @@ import {
   Visibility,
   Popup,
   Item,
+  Header,
+  Grid
 } from "semantic-ui-react";
 import CartPopup from "./CartPopup";
 import Typewriter from "typewriter-effect";
-
+import bgfoods from '../assets/bgfoods.jpg';
 class Landing extends Component {
   constructor() {
     super();
@@ -26,14 +28,14 @@ class Landing extends Component {
 
     return (
       <Segment
-        inverted
         textAlign="center"
-        style={{ minHeight: this.state.height, padding: "1em 0em" }}
+        style={{ minHeight: this.state.height, padding: "1em 0em", backgroundImage: `url(${bgfoods})` }}
         vertical
+        id="home"
       >
         <Visibility
           once={false}
-          onBottomPassed={this.showFixedMenu}
+          onTopPassed={this.showFixedMenu}
           onBottomPassedReverse={this.hideFixedMenu}
         >
           <Menu
@@ -43,7 +45,7 @@ class Landing extends Component {
             size="large"
           >
             <Container>
-              <Menu.Item as="a">Home</Menu.Item>
+              <Menu.Item as="a" href="#home">Home</Menu.Item>
               <Menu.Item as="a" href="#menu">
                 Menu
               </Menu.Item>
@@ -79,7 +81,31 @@ class Landing extends Component {
             </Container>
           </Menu>
         </Visibility>
-        <h1>Hey Do You Want To Order Food From Your Fav Place..</h1>
+        <Segment vertical>
+          <Container textAlign='center'>
+            <Header style={{ fontFamily: 'Amigo', fontSize: '10em', color: '#e15959', '-webkit-text-stroke': "2px black", marginTop: '1em' }}>Kalu Paranthas</Header>
+          </Container>
+        </Segment>
+        <Segment vertical style={{ fontFamily: 'Mexican Tequila', fontSize: '4em', color: '#52a083', '-webkit-text-stroke': "2px black" }}>
+          <Grid verticalAlign='middle'>
+            <Grid.Row>
+              <Grid.Column width={8} textAlign='right'>
+                <Typewriter
+                  options={{
+                    strings: ["Paneer Paranthas", "Laccha Paranthas", "Plain Paranthas", "Aloo Paranthas"],
+                    autoStart: true,
+                    loop: true
+                  }} />
+              </Grid.Column>
+              <Grid.Column width={8} textAlign='left'>
+                <p style={{ fontFamily: 'Mexican Tequila', fontSize: '1em', color: '#52a083', '-webkit-text-stroke': "2px black" }}>and more treats !</p>
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+
+
+        </Segment>
+        {/* {<h1>Hey Do You Want To Order Food From Your Fav Place..</h1>
         <h4>
           We A Team Of
             <Typewriter
@@ -90,7 +116,7 @@ class Landing extends Component {
             }}
           />
         </h4>
-        <h1>Are Here To Help You Out</h1>
+        <h1>Are Here To Help You Out</h1>} */}
       </Segment>
 
     );

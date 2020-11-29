@@ -1,0 +1,13 @@
+@font-face{
+    font-family: 'Roboto';
+    src: local('Roboto-Medium'), url('../fonts/Roboto-Medium.ttf'), format('truetype');
+}
+
+@font-face{
+    font-family: 'Amigo';
+    src: local('Amigo'), url('../fonts/Amigo.ttf'), format('truetype');
+}
+@font-face{
+    font-family: 'Mexican Tequila';
+    src: local('Mexican Tequila'), url('../fonts/MexicanTequila.ttf'), format('truetype');
+}
