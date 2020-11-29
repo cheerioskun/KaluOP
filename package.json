@@ -1,0 +1,25 @@
+{
+  "name": "kaluop",
+  "version": "1.0.0",
+  "description": "A paratha ordering app for Kalu Paratha outisde NIT Kurukshetra",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cheerioskun/KaluOP.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cheerioskun/KaluOP/issues"
+  },
+  "homepage": "https://github.com/cheerioskun/KaluOP#readme",
+  "dependencies": {
+    "axios": "^0.21.0",
+    "react": "^17.0.1",
+    "react-dom": "^17.0.1",
+    "semantic-ui-react": "^2.0.1"
+  }
+}
