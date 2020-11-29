@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { Card, Button, Icon } from 'semantic-ui-react';
+import { Card, Button, Icon, Image } from 'semantic-ui-react';
 class MenuItem extends Component {
 
     render() {
         return (
             <Card>
+                <Image src={'data:img/png;base64,' + this.props.item.image} />
                 <Card.Content>
                     <Card.Header>{this.props.item.itemName}</Card.Header>
                     <Card.Meta className="ui green">Vegetarian</Card.Meta>
