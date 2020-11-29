@@ -12,7 +12,7 @@ class Contact extends Component {
   }
   render() {
     return (
-      <Container fluid styles={{ padding: '3em' }}>
+      <Container fluid styles={{ padding: '3em' }} id="contact">
         <Visibility onTopPassed={this.handleAppearance}>
           <Container textAlign='center'>
             <Header style={{ padding: '1em', fontSize: '3em' }}>Contact</Header>

@@ -84,7 +84,7 @@ class Landing extends Component {
             We A Team Of
             <Typewriter
               options={{
-                strings: ["Yash Goenka", "Aakash Barthwal","Rachit Nehra","Hemant Pandey"],
+                strings: ["Yash Goenka", "Aakash Barthwal", "Rachit Nehra", "Hemant Pandey"],
                 autoStart: true,
                 loop: true,
               }}
