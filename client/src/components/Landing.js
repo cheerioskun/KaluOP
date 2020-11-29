@@ -37,9 +37,8 @@ class Landing extends Component {
           onBottomPassedReverse={this.hideFixedMenu}
         >
           <Menu
-            navFixed={this.state.navFixed ? "top" : null}
-            inverted={!this.state.navFixed}
-            pointing={!this.state.navFixed}
+            fixed={this.state.navFixed ? "top" : null}
+            inverted
             secondary={!this.state.navFixed}
             size="large"
           >
@@ -61,6 +60,7 @@ class Landing extends Component {
                 <Popup
                   wide
                   position="bottom center"
+                  disabled={this.props.cart.length === 0}
                   trigger={
                     <Button
                       as="a"
