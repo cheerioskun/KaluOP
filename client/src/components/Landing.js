@@ -92,7 +92,7 @@ class Landing extends Component {
               <Grid.Column width={8} textAlign='right'>
                 <Typewriter
                   options={{
-                    strings: ["Paneer Paranthas", "Laccha Paranthas", "Plain Paranthas", "Aloo Paranthas"],
+                    strings: ["Paneer Parantha", "Laccha Parantha", "Plain Parantha", "Aloo Parantha"],
                     autoStart: true,
                     loop: true
                   }} />
