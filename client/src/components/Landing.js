@@ -8,7 +8,7 @@ import {
   Popup,
   Item
 } from 'semantic-ui-react';
-
+import CartPopup from './CartPopup';
 
 class Landing extends Component {
   constructor() {
@@ -21,7 +21,6 @@ class Landing extends Component {
   hideFixedMenu = () => this.setState({ navFixed: false });
   showFixedMenu = () => this.setState({ navFixed: true });
   render() {
-    const { children } = this.props;
     const { navFixed } = this.state;
 
     return (
@@ -44,9 +43,9 @@ class Landing extends Component {
             size='large'
           >
             <Container>
-              <Menu.Item as='a' active>
+              <Menu.Item as='a'>
                 Home
-                    </Menu.Item>
+              </Menu.Item>
               <Menu.Item as='a' href='#menu'>Menu</Menu.Item>
               <Menu.Item as='a'>Contact</Menu.Item>
               <Menu.Item position='right'>
@@ -57,17 +56,7 @@ class Landing extends Component {
                   on='click'
 
                 >
-                  <Item.Group>
-                    {this.props.cart.map(item =>
-                      <Item>
-                        <Item.Content>
-                          <Item.Header>{item.itemName}</Item.Header>
-                          <Item.Meta>Qty: {item.qty}</Item.Meta>
-                          <Item.Description>Total Cost: {item.qty * item.unitPrice}.00</Item.Description>
-                        </Item.Content>
-                      </Item>)}
-                  </Item.Group>
-
+                  <CartPopup cart={this.props.cart} />
                 </Popup>
               </Menu.Item>
             </Container>

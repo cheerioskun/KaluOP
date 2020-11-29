@@ -15,7 +15,7 @@ class MenuItem extends Component {
                     <Button.Group floated='right'>
                         <Button color='red' onClick={() => { this.props.handlers.cartHandler(this.props.item, 'remove') }}><Icon name='minus' /></Button>
                         <Button.Or text='or' />
-                        <Button positive onClick={() => { this.props.handlers.cartHandler(this.props.item, 'add') }}><Icon name='plus' inverted /></Button>
+                        <Button positive onClick={() => { this.props.handlers.cartHandler(this.props.item, 'add') }}><Icon name='plus' /></Button>
                     </Button.Group>
                 </Card.Content>
             </Card>

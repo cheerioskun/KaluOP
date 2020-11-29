@@ -3,6 +3,7 @@ import 'semantic-ui-css/semantic.min.css';
 import Landing from './components/Landing';
 import Menu from './components/Menu';
 import Contact from './components/Contact';
+import OrderForm from './components/OrderForm';
 class App extends Component {
     constructor() {
         super();
@@ -47,6 +48,7 @@ class App extends Component {
             <div>
                 <Landing handlers={this.cartHandler} cart={this.state.cart} />
                 <Menu handlers={{ cartHandler: this.cartHandler }} />
+                <OrderForm />
                 <Contact />
             </div>
         );
