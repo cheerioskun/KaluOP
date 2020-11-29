@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Visibility, Container, Header, Grid, Card } from 'semantic-ui-react';
+import { Segment, Visibility, Container, Header, Card } from 'semantic-ui-react';
 import MenuItem from './MenuItem';
 import { fetchMenu } from '../api/index.js';
 
@@ -11,14 +11,17 @@ class Menu extends Component {
         this.hideMenu = this.hideMenu.bind(this);
 
     }
+    componentDidMount() {
+        fetchMenu().then(
+            data => this.setState({ menuItems: [...data.data] })
+        ).catch(error => console.log(error));
+
+    }
     showMenu = () => { this.setState({ menu: true }) };
     hideMenu = () => { this.setState({ menu: false }) };
 
     render() {
         const columnCount = 3;
-        fetchMenu().then(
-            data => this.setState({ menuItems: [...data.data] })
-        ).catch(error => console.log(error));
 
         return (
             <div>
@@ -31,7 +34,7 @@ class Menu extends Component {
                             itemsPerRow={columnCount}
                             stackable
                         >
-                            {this.state.menuItems.map(item => <MenuItem item={item} />)}
+                            {this.state.menuItems.map(item => <MenuItem item={item} handlers={this.props.handlers} />)}
                         </Card.Group>
                     </Segment>
 

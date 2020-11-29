@@ -1,26 +1,29 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import {
   Button,
   Container,
   Menu,
   Segment,
   Visibility,
-} from 'semantic-ui-react';
-
+  Popup,
+  Item,
+} from "semantic-ui-react";
+import CartPopup from "./CartPopup";
+import Typewriter from "typewriter-effect";
 
 class Landing extends Component {
   constructor() {
     super();
-    this.state = { fixed: false };
+    this.state = { navFixed: false };
     this.hideFixedMenu = this.hideFixedMenu.bind(this);
     this.showFixedMenu = this.showFixedMenu.bind(this);
     this.height = window.innerHeight;
   }
-  hideFixedMenu = () => this.setState({ fixed: false });
-  showFixedMenu = () => this.setState({ fixed: true });
+  hideFixedMenu = () => this.setState({ navFixed: false });
+  showFixedMenu = () => this.setState({ navFixed: true });
+
   render() {
-    const { children } = this.props;
-    const { fixed } = this.state;
+    const { navFixed } = this.state;
 
     return (
       <Visibility
@@ -30,30 +33,64 @@ class Landing extends Component {
       >
         <Segment
           inverted
-          textAlign='center'
-          style={{ minHeight: this.height, padding: '1em 0em' }}
+          textAlign="center"
+          style={{ minHeight: this.height, padding: "1em 0em" }}
           vertical
         >
           <Menu
-            fixed={fixed ? 'top' : null}
-            inverted={!fixed}
-            pointing={!fixed}
-            secondary={!fixed}
-            size='large'
+            navFixed={navFixed ? "top" : null}
+            inverted={!navFixed}
+            pointing={!navFixed}
+            secondary={!navFixed}
+            size="large"
           >
             <Container>
-              <Menu.Item as='a' active>
-                Home
-                    </Menu.Item>
-              <Menu.Item as='a' href='#menu'>Menu</Menu.Item>
-              <Menu.Item as='a'>Contact</Menu.Item>
-              <Menu.Item position='right'>
-                <Button as='a' inverted={!fixed} primary={fixed} icon='search' />
-                <Button as='a' inverted={!fixed} content='Cart' icon='cart' labelPosition='left' style={{ marginLeft: '0.5em' }} />
-
+              <Menu.Item as="a">Home</Menu.Item>
+              <Menu.Item as="a" href="#menu">
+                Menu
+              </Menu.Item>
+              <Menu.Item as="a" href="#contact">
+                Contact
+              </Menu.Item>
+              <Menu.Item position="right">
+                <Button
+                  as="a"
+                  inverted={!navFixed}
+                  primary={navFixed}
+                  icon="search"
+                />
+                <Popup
+                  wide
+                  position="bottom center"
+                  trigger={
+                    <Button
+                      as="a"
+                      inverted={!navFixed}
+                      content="Cart"
+                      icon="cart"
+                      labelPosition="left"
+                      style={{ marginLeft: "0.5em" }}
+                    />
+                  }
+                  on="click"
+                >
+                  <CartPopup cart={this.props.cart} />
+                </Popup>
               </Menu.Item>
             </Container>
           </Menu>
+          <h1>Hey Do You Want To Order Food From Your Fav Place..</h1>
+          <h4>
+            We A Team Of
+            <Typewriter
+              options={{
+                strings: ["Yash Goenka", "Aakash Barthwal","Rachit Nehra","Hemant Pandey"],
+                autoStart: true,
+                loop: true,
+              }}
+            />
+          </h4>
+          <h1>Are Here To Help You Out</h1>
         </Segment>
       </Visibility>
     );
