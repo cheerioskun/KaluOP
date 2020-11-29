@@ -26,7 +26,7 @@ class Menu extends Component {
         return (
             <div>
                 <Visibility>
-                    <Segment raised id="menu">
+                    <Segment id="menu">
                         <Container textAlign='center'>
                             <Header style={{ padding: '1em', fontSize: '3em' }}>Menu</Header>
                         </Container>
